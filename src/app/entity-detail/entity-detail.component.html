@@ -1,0 +1,11 @@
+<h1>Entity detail</h1>
+<h2><a [routerLink]="['/']">Back to index</a></h2>
+<table class="table">
+    <tr *ngFor="let entity of entities">
+        <td class="table-value" *ngFor="let i of numberParameters"
+            [style.background-color]="entity['backgroundColor'+i]"
+            [style.color]="entity['color'+i]">
+            {{entity["parameter"+i] | number: '1.4-4'}}
+        </td>
+    </tr>
+</table>

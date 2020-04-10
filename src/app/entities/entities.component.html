@@ -1,0 +1,23 @@
+<h1>Actual Entities</h1>
+<table class="table">
+    <tr *ngFor="let entity of actualEntities">
+        <td class="table-value"><a [routerLink]="['/entity', entity.id]">{{entity.id}}</a></td>
+        <td class="table-value" *ngFor="let i of numberParameters"
+            [style.background-color]="entity['backgroundColor'+i]"
+            [style.color]="entity['color'+i]">
+            {{entity["parameter"+i] | number: '1.4-4'}}
+        </td>
+    </tr>
+    <tr>
+        <td>Summary</td>
+        <td *ngFor="let filter of filters">
+            <select (change)="onChangeCondition($event.target.value, filter.idColumn)">
+                <option *ngFor="let condition of filter.conditions" [value]="condition">{{condition}}</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td *ngFor="let filter of filters">{{filter.conditionValue | number: '1.4-4'}}</td>
+    </tr>
+</table>
